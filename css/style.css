@@ -15,14 +15,22 @@ body, html {
     scroll-behavior: smooth;
 }
 
-/* פס התקדמות עליון */
+/* תמונת הרקע - שים לב לנתיב המדויק */
+.hero-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/background.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
 #progress-bar {
     position: fixed;
     top: 0; right: 0; height: 4px;
     background: var(--gold);
     width: 0%;
     z-index: 1000;
-    transition: width 0.1s;
 }
 
 header {
@@ -40,49 +48,17 @@ nav {
     padding: 10px 50px;
 }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
+.nav-links { list-style: none; display: flex; gap: 20px; }
+.nav-links a { color: white; text-decoration: none; transition: 0.3s; }
 .nav-links a:hover { color: var(--gold); }
 
 .logo img { height: 50px; }
 
-/* כפתור מוזיקה */
-.switch {
-    position: relative; display: inline-block;
-    width: 40px; height: 20px;
-}
-.switch input { opacity: 0; width: 0; height: 0; }
-.slider {
-    position: absolute; cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #444; transition: .4s;
-    border-radius: 34px;
-}
-.slider:before {
-    position: absolute; content: "";
-    height: 14px; width: 14px; left: 3px; bottom: 3px;
-    background-color: white; transition: .4s; border-radius: 50%;
-}
-input:checked + .slider { background-color: var(--gold); }
-input:checked + .slider:before { transform: translateX(20px); }
-
-/* הירו */
 .hero {
     height: 90vh;
     display: flex;
     align-items: center;
     padding-right: 10%;
-    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
 }
 
 .main-title { font-size: 60px; font-weight: 900; margin: 0; }
@@ -98,14 +74,4 @@ input:checked + .slider:before { transform: translateX(20px); }
     text-decoration: none;
     font-weight: 700;
     transition: 0.3s;
-}
-
-.btn-portfolio:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--red); }
-
-/* פוטר */
-footer {
-    background: #050505;
-    padding: 60px 20px;
-    text-align: center;
-    border-top: 1px solid var(--gold);
 }
