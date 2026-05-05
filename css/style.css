@@ -1,1 +1,159 @@
+/* =========================================
+   הגדרות גלובליות - משתני צבע של סטודיומיק
+   ========================================= */
+:root {
+    --gold: #d4af37;
+    --red: #e63946;
+    --black: #080808;
+    --white: #ffffff;
+}
 
+/* איפוס והגדרת גופן לכל האתר */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Heebo', sans-serif;
+    background-color: var(--black);
+    color: var(--white);
+    direction: rtl; /* יישור לימין לעברית */
+}
+
+/* =========================================
+   תפריט עליון - Header
+   ========================================= */
+header {
+    background: rgba(0, 0, 0, 0.8);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* פס זהב עדין למטה */
+    backdrop-filter: blur(10px);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    width: 60px;
+    height: 60px;
+    transition: transform 0.5s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+/* =========================================
+   אזור ההירו - המסך הראשי
+   ========================================= */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.main-title {
+    font-size: 70px;
+    font-weight: 900;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.gold-title {
+    font-size: 65px;
+    font-weight: 900;
+    color: var(--gold);
+    margin: 10px 0;
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.1);
+}
+
+.hero-subtitle {
+    font-size: 22px;
+    max-width: 600px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    color: #cccccc;
+}
+
+/* כפתור הפעולה - CTA */
+.cta-button {
+    display: inline-block;
+    background-color: var(--red);
+    color: var(--white);
+    padding: 15px 40px;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: 0.3s;
+    border: 2px solid transparent;
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+/* =========================================
+   פוטר - תחתית האתר וצור קשר
+   ========================================= */
+footer {
+    background-color: #111;
+    padding: 50px 20px 20px;
+    text-align: center;
+    border-top: 2px solid var(--gold);
+}
+
+.footer-content h3 {
+    color: var(--gold);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #777;
+}
