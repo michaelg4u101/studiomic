@@ -11,23 +11,46 @@ body, html {
     font-family: 'Heebo', sans-serif;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('../assets/background.png');
     background-size: cover;
-    background-position: center -100px; /* המיקום שביקשת */
+    background-position: center -100px;
     background-attachment: fixed;
     background-color: var(--black);
     color: var(--white);
     overflow-x: hidden;
     direction: rtl;
 }
-/* --- ההדר נדבק למעלה עם רקע אפור בהיר --- */
+
+/* --- ההדר נדבק למעלה --- */
 header {
     background-color: #EAEAEA;
-    position: sticky; /* דואג שההדר יידבק למעלה */
+    position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* צל עדין */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* הוספתי יישור מרכזי וגובה כדי למנוע בלאגן */
+    height: 80px;
+    display: flex;
+    align-items: center;
 }
 
-/* טקסט הקישורים צריך להיות שחור כי הרקע בהיר */
+/* הוספתי הגדרת nav כדי שהלוגו, התפריט והמוזיקה יהיו בשורה אחת */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
 .nav-links a {
     color: #000000;
     text-decoration: none;
@@ -38,20 +61,27 @@ header {
 .nav-links a:hover {
     color: var(--gold);
 }
+
 /* --- עיצוב הלוגו והנפשה --- */
 .logo img {
-    height: 60px; /* זה הגובה שישמור עליו שלא יהיה ענק */
+    height: 60px;
     width: auto;
     display: block;
-    transition: transform 0.6s ease-in-out; /* האנימציה של הסיבוב */
+    transition: transform 0.6s ease-in-out;
     cursor: pointer;
 }
 
 .logo img:hover {
-    transform: rotate(360deg); /* הסיבוב שביקשת בריחוף עכבר */
+    transform: rotate(360deg);
 }
 
-/* תו המוזיקה שחור */
+/* מוזיקה - יישור ושחור */
+.music-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .music-icon {
     color: #000000;
     font-size: 18px;
@@ -67,7 +97,7 @@ header {
     display: none;
     position: absolute;
     top: 100%;
-    right: 0; /* מותאם לעברית (RTL) */
+    right: 0;
     background-color: #EAEAEA;
     min-width: 150px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
@@ -96,22 +126,30 @@ header {
     background-color: #dcdcdc;
 }
 
-/* מציג את התפריט כשהעכבר מרחף */
 .dropdown:hover .dropdown-menu {
     display: block;
 }
 
-/* Hero Section - מיושר לשמאל כבתמונה */
+/* --- Hero Section - יישור כללי --- */
+/* הוספתי את הקלאס hero כדי שהתוכן (hero-content) ייצמד לשמאל */
+.hero {
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* מצמיד לשמאל */
+    direction: ltr; /* הופך כיוון כדי שהטקסט יהיה בשמאל והתמונה בימין */
+    padding: 0 10%;
+}
+
 .hero-content {
     max-width: 600px;
     text-align: left;
-    position: relative; /* חשוב כדי שפירורי הלחם יתמקמו נכון */
+    position: relative;
 }
 
-/* פירורי הלחם מוצמדים למעלה מתחת להדר */
 .breadcrumbs {
     position: absolute;
-    top: -120px; /* מושך את הטקסט למעלה לכיוון ההדר */
+    top: -100px; /* התאמתי קצת את הגובה להדר החדש */
     left: 0;
     color: rgba(255, 255, 255, 0.7);
     font-size: 15px;
@@ -122,13 +160,13 @@ header {
     font-size: 70px;
     font-weight: 900;
     margin: 0;
-    line-height: 0.9; /* מקטין את גובה השורה */
+    line-height: 0.9;
 }
 
 .gold-title {
     font-size: 60px;
     color: var(--gold);
-    margin: 0; /* הורדנו רווח עליון */
+    margin: 0;
     font-weight: 900;
     line-height: 0.9;
 }
@@ -136,11 +174,11 @@ header {
 .thin-title {
     font-size: 35px;
     font-weight: 300;
-    margin: 5px 0 20px 0; /* רווח קטנטן ומיד אחריו הטקסט הקטן */
+    margin: 5px 0 20px 0;
     line-height: 1;
 }
 
-/* --- כפתור האזינו לדוגמאות עם אנימציית הזהב-שחור --- */
+/* --- כפתור האזינו לדוגמאות --- */
 .btn-portfolio {
     background: linear-gradient(110deg, #000000 35%, #D6B078 50%, #000000 65%);
     background-size: 200% auto;
@@ -148,12 +186,10 @@ header {
     -webkit-text-fill-color: transparent;
     animation: black-gold-reverse 3s linear infinite;
     display: inline-block;
-    
-    /* הגדרות כפתור נוספות כדי שייראה טוב */
     font-size: 20px;
     font-weight: 700;
     padding: 10px 30px;
-    border: 2px solid var(--gold); /* מסגרת זהב כדי להבליט אותו על הרקע */
+    border: 2px solid var(--gold);
     border-radius: 50px;
     text-decoration: none;
     cursor: pointer;
