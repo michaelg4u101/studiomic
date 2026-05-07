@@ -29,7 +29,7 @@ header {
     height: 80px;
     display: flex;
     align-items: center;
-    overflow: visible;
+    overflow: visible; /* מאפשר ללוגו לפרוץ החוצה */
 }
 
 nav {
@@ -45,36 +45,38 @@ nav {
     display: flex;
     align-items: center;
     position: relative;
-    flex: 1; /* נותן מרחב שווה */
+    flex: 1;
 }
 
 .logo img {
-    height: 120px;
+    height: 120px; /* לוגו גדול ומרשים */
     width: auto;
     position: absolute;
-    top: -20px;
+    top: -20px; /* פורץ משמעותית למעלה ולמטה מההדר */
     right: 0;
     z-index: 1001;
-    transition: 0.4s;
+    transition: 0.4s ease-in-out;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
 }
 
 .logo img:hover { transform: rotate(360deg); }
 
-/* פירורי הלחם - לבן, מתחת להדר, ליד האות S */
+/* פירורי הלחם - לבן, דבוק לתחתית ההדר מבחוץ על הרקע השחור */
 .breadcrumbs {
     position: absolute;
-    top: 40px; /* בדיוק מתחת להדר */
-    right: 140px; 
+    top: 40px; /* בדיוק מתחת לקו ההדר האפור */
+    right: 140px; /* מיושר ליד הלוגו */
     color: var(--white);
     font-size: 14px;
-    white-space: nowrap;
+    white-space: nowrap; /* מונע שבירה */
+    z-index: 999;
 }
 
-/* --- תפריט ניווט (מרכז) - סידור בשורה --- */
+/* --- תפריט ניווט (מרכז) --- */
 .nav-links {
     display: flex;
-    list-style: none; /* מסיר את הנקודות */
-    gap: 20px;
+    list-style: none;
+    gap: 25px;
     margin: 0;
     padding: 0;
     flex: 2;
@@ -84,7 +86,8 @@ nav {
 .nav-links a {
     color: #000;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 17px;
     transition: 0.3s;
 }
 
@@ -101,6 +104,7 @@ nav {
     top: 100%;
     right: 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    min-width: 120px;
 }
 .dropdown:hover .dropdown-menu { display: block; }
 
@@ -113,7 +117,7 @@ nav {
     justify-content: flex-end;
 }
 
-.music-icon { color: #000; font-size: 18px; }
+.music-icon { color: #000; font-size: 20px; font-weight: bold; }
 
 .switch {
     position: relative;
@@ -143,55 +147,62 @@ input:checked + .slider:before { transform: translateX(21px); }
 
 /* --- Hero Content (שמאל) --- */
 .hero {
-    height: 80vh;
+    height: 85vh;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* דוחף לשמאל ב-RTL */
-    padding: 0 10%;
+    justify-content: flex-end;
+    padding: 0 8%;
 }
 
 .hero-content {
-    text-align: left; /* יישור טקסט לשמאל */
-    max-width: 550px;
+    text-align: left;
+    max-width: 700px;
 }
 
-.main-title { font-size: 80px; font-weight: 900; margin: 0; line-height: 0.9; }
-.gold-title { font-size: 80px; color: var(--gold); margin: 0; line-height: 0.9; }
-/* --- שליטה בטקסט "מזכרת לכל החיים" --- */
+/* מניעת ירידת שורה בכותרות */
+.main-title, .gold-title, .thin-title { 
+    white-space: nowrap; /* התיקון שביקשת - מונע שבירת שורות */
+    margin: 0; 
+    line-height: 0.9; 
+}
+
+.main-title { font-size: 85px; font-weight: 900; }
+.gold-title { font-size: 80px; color: var(--gold); }
+
 .thin-title {
-    font-size: 80px;        /* גודל הטקסט */
-    font-weight: 300;       /* עובי דק שנותן מראה אלגנטי */
-    color: var(--white);    /* צבע לבן */
-    margin: 5px 0 15px 0;   /* רווח קטן למעלה וקצת יותר למטה */
-    line-height: 1.2;
+    font-size: 40px; /* הקטנתי מעט מ-80 כדי שיהיה פרופורציונלי ככותרת שלישית */
+    font-weight: 300;
+    color: var(--white);
+    margin-top: 10px;
+    line-height: 1.1;
 }
 
-/* --- שליטה בטקסט הרגיל (אולפן הקלטות בוטיק...) --- */
 .description {
-    font-size: 18px;        /* גודל טקסט קריא */
-    font-weight: 400;       /* עובי רגיל */
-    color: rgba(255, 255, 255, 0.9); /* לבן מעט שקוף כדי שלא יגנוב את ההצגה */
-    line-height: 1.6;       /* מרווח בין השורות לקריאות טובה */
-    margin-bottom: 25px;    /* רווח לפני הכפתור */
-    max-width: 500px;       /* הגבלת רוחב כדי שהשורות לא יהיו ארוכות מדי */
+    font-size: 19px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin: 25px 0;
+    max-width: 500px;
 }
 
 /* --- כפתור אדום עם מסגרת זהב וטקסט מנצנץ --- */
 .btn-portfolio {
     background-color: var(--red);
     display: inline-block;
-    padding: 12px 35px;
+    padding: 12px 40px;
     border-radius: 50px;
     text-decoration: none;
-    margin-top: 30px;
-    border: 1.5px solid var(--gold); /* מסגרת הזהב שביקשת */
-    transition: 0.3s;
+    border: 2px solid var(--gold); /* מסגרת הזהב */
+    transition: 0.3s transform;
 }
 
+.btn-portfolio:hover { transform: scale(1.05); }
+
 .btn-portfolio span {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
-    background: linear-gradient(110deg, #000 35%, #D6B078 50%, #000 65%);
+    background: linear-gradient(110deg, #000 35%, var(--gold) 50%, #000 65%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -199,6 +210,6 @@ input:checked + .slider:before { transform: translateX(21px); }
 }
 
 @keyframes shine {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
 }
