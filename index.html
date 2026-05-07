@@ -62,17 +62,31 @@
 </audio>
 
 <script>
-    // קוד להפעלת המוזיקה עם הכפתור
+    // הוספנו הערות HTML כדי להסביר את החלק הזה
+    // <!-- תחילת סקריפט לוגי לניגון מוזיקה -->
+    
     const musicToggle = document.getElementById('music-toggle');
     const bgMusic = document.getElementById('myAudio');
 
+    // פונקציה שמנסה לנגן
+    function playMusic() {
+        // מנסה לנגן ומטפל בשגיאה אם הדפדפן חוסם
+        bgMusic.play().catch(e => {
+            console.error("הדפדפן חסם ניגון אוטומטי. יש צורך בלחיצה נוספת.", e);
+        });
+    }
+
     musicToggle.addEventListener('change', function() {
         if (this.checked) {
-            bgMusic.play().catch(e => console.log("הדפדפן חסם ניגון אוטומטי"));
+            // כאשר המשתמש מדליק את הכפתור, אנחנו מפעילים את הפונקציה
+            playMusic();
         } else {
+            // כאשר המשתמש מכבה את הכפתור
             bgMusic.pause();
         }
     });
+
+    // <!-- סוף סקריפט לוגי -->
 </script>
 
 </body>
