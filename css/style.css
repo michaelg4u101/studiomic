@@ -155,8 +155,26 @@ input:checked + .slider:before { transform: translateX(21px); }
     max-width: 550px;
 }
 
-.main-title { font-size: 75px; font-weight: 900; margin: 0; line-height: 0.9; }
-.gold-title { font-size: 65px; color: var(--gold); margin: 0; line-height: 0.9; }
+.main-title { font-size: 80px; font-weight: 900; margin: 0; line-height: 0.9; }
+.gold-title { font-size: 80px; color: var(--gold); margin: 0; line-height: 0.9; }
+/* --- שליטה בטקסט "מזכרת לכל החיים" --- */
+.thin-title {
+    font-size: 80px;        /* גודל הטקסט */
+    font-weight: 300;       /* עובי דק שנותן מראה אלגנטי */
+    color: var(--white);    /* צבע לבן */
+    margin: 5px 0 15px 0;   /* רווח קטן למעלה וקצת יותר למטה */
+    line-height: 1.2;
+}
+
+/* --- שליטה בטקסט הרגיל (אולפן הקלטות בוטיק...) --- */
+.description {
+    font-size: 18px;        /* גודל טקסט קריא */
+    font-weight: 400;       /* עובי רגיל */
+    color: rgba(255, 255, 255, 0.9); /* לבן מעט שקוף כדי שלא יגנוב את ההצגה */
+    line-height: 1.6;       /* מרווח בין השורות לקריאות טובה */
+    margin-bottom: 25px;    /* רווח לפני הכפתור */
+    max-width: 500px;       /* הגבלת רוחב כדי שהשורות לא יהיו ארוכות מדי */
+}
 
 /* --- כפתור אדום עם מסגרת זהב וטקסט מנצנץ --- */
 .btn-portfolio {
