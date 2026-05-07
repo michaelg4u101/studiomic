@@ -1,5 +1,5 @@
 :root {
-    --gold: #d4af37;
+    --gold: #D6B078;
     --red: #e63946;
     --black: #0a0a0a;
     --white: #ffffff;
@@ -9,138 +9,110 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Heebo', sans-serif;
-    /* הגדרת הרקע ישירות כאן פותרת את כל בעיות ה-z-index */
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), 
-                url('../assets/background.png');
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('../assets/background.png');
     background-size: cover;
-    background-position: center -100px;
-    background-attachment: fixed; /* גורם לרקע להישאר יציב בגלילה */
+    background-position: center -100px; /* המיקום שביקשת */
+    background-attachment: fixed;
     background-color: var(--black);
     color: var(--white);
     overflow-x: hidden;
-    scroll-behavior: smooth;
     direction: rtl;
 }
 
-/* עיצוב הבר העליון */
+/* Header & Nav */
 header {
-    background: rgba(0, 0, 0, 0.8); /* רקע כהה שקוף מעט */
-    backdrop-filter: blur(10px);   /* אפקט טשטוש יוקרתי */
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* קו מוזהב עדין למטה */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
 }
 
-/* סידור האלמנטים בשורה */
 nav {
     display: flex;
-    justify-content: space-between; /* דוחף את הצדדים לקצוות ואת התפריט לאמצע */
+    justify-content: space-between;
     align-items: center;
     padding: 10px 5%;
     max-width: 1400px;
-    margin: 0 auto; /* ממרכז את הכל בתוך המסך */
+    margin: 0 auto;
 }
 
-/* הגבלת גודל הלוגו - זה מה שמונע ממנו להיות ענק */
 .logo img {
-    height: 60px; /* גובה הלוגו - אתה יכול לשנות ל-50 או 70 לפי הטעם */
-    width: auto;  /* שומר על פרופורציות */
-    display: block;
+    height: 60px;
+    width: auto;
 }
 
-/* עיצוב רשימת הקישורים */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px; /* רווח בין כפתור לכפתור בתפריט */
-    margin: 0;
-    padding: 0;
+    gap: 30px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-weight: 400;
     transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: var(--gold); /* צבע זהב במעבר עכבר */
-}
-/* תיקון למתג המוזיקה - כדי שלא יראה כריבוע */
+.nav-links a:hover { color: var(--gold); }
+
+/* מוזיקה - צד שמאל */
 .music-toggle {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 46px;
-    height: 22px;
-}
-
-.switch input {
-    opacity: 0; /* מחביא את הריבוע הלבן */
-    width: 0;
-    height: 0;
-    position: absolute;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
+.toggle-container {
+    width: 50px;
+    height: 25px;
     background-color: #444;
-    transition: .4s;
-    border-radius: 34px;
-    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 3px;
-    bottom: 2px;
+.toggle-container.active { background-color: var(--gold); }
+
+.circle {
+    width: 21px;
+    height: 21px;
     background-color: white;
-    transition: .4s;
     border-radius: 50%;
+    position: absolute;
+    top: 2px; left: 2px;
+    transition: 0.3s;
 }
 
-input:checked + .slider {
-    background-color: var(--gold);
-}
+.toggle-container.active .circle { transform: translateX(25px); }
 
-input:checked + .slider:before {
-    transform: translateX(24px);
-}
-
-/* שיפור ה-Hero */
+/* Hero Section - מיושר לשמאל כבתמונה */
 .hero {
-    height: 80vh;
+    height: 90vh;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* מצמיד את התוכן לימין ב-RTL */
+    direction: ltr; /* דוחף את התוכן לשמאל */
     padding: 0 10%;
 }
 
 .hero-content {
     max-width: 600px;
-    text-align: right;
+    text-align: left; /* יישור הטקסט לשמאל */
 }
 
-.main-title {
-    font-size: 70px;
-    line-height: 1;
-    margin-bottom: 10px;
-}
+.main-title { font-size: 70px; font-weight: 900; margin: 0; }
+.gold-title { font-size: 60px; color: var(--gold); margin: 0; }
+.thin-title { font-size: 30px; font-weight: 300; margin: 10px 0; }
+.sub-text { color: #ccc; margin-bottom: 30px; line-height: 1.6; }
 
-.gold-title {
-    font-size: 60px;
-    color: #d4af37;
-    margin-top: 0;
+.btn-portfolio {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
 }
