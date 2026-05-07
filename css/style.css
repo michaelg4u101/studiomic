@@ -22,26 +22,52 @@ body, html {
     direction: rtl;
 }
 
-/* אפשר למחוק את .hero-bg מה-HTML ומה-CSS */
-
+/* עיצוב הבר העליון */
 header {
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.8); /* רקע כהה שקוף מעט */
+    backdrop-filter: blur(10px);   /* אפקט טשטוש יוקרתי */
     position: sticky;
-    top: 0; 
+    top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* קו מוזהב עדין למטה */
 }
 
+/* סידור האלמנטים בשורה */
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* דוחף את הצדדים לקצוות ואת התפריט לאמצע */
     align-items: center;
-    padding: 15px 5%; /* שימוש באחוזים עוזר למנוע היצמדות לקצוות */
+    padding: 10px 5%;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0 auto; /* ממרכז את הכל בתוך המסך */
 }
 
+/* הגבלת גודל הלוגו - זה מה שמונע ממנו להיות ענק */
+.logo img {
+    height: 60px; /* גובה הלוגו - אתה יכול לשנות ל-50 או 70 לפי הטעם */
+    width: auto;  /* שומר על פרופורציות */
+    display: block;
+}
+
+/* עיצוב רשימת הקישורים */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px; /* רווח בין כפתור לכפתור בתפריט */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--gold); /* צבע זהב במעבר עכבר */
+}
 /* תיקון למתג המוזיקה - כדי שלא יראה כריבוע */
 .music-toggle {
     display: flex;
