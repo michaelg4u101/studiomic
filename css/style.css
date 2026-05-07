@@ -10,7 +10,7 @@ body, html {
     padding: 0;
     font-family: 'Heebo', sans-serif;
     /* הגדרת הרקע ישירות כאן פותרת את כל בעיות ה-z-index */
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), 
                 url('../assets/background.png');
     background-size: cover;
     background-position: center;
@@ -98,8 +98,23 @@ input:checked + .slider:before {
     height: 80vh;
     display: flex;
     align-items: center;
+    justify-content: flex-start; /* מצמיד את התוכן לימין ב-RTL */
     padding: 0 10%;
 }
 
-.main-title { font-size: clamp(40px, 6vw, 70px); font-weight: 900; line-height: 1.1; }
-.gold-title { font-size: clamp(35px, 5vw, 60px); color: var(--gold); font-weight: 900; }
+.hero-content {
+    max-width: 600px;
+    text-align: right;
+}
+
+.main-title {
+    font-size: 70px;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.gold-title {
+    font-size: 60px;
+    color: #d4af37;
+    margin-top: 0;
+}
