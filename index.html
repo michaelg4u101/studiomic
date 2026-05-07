@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>סטודיומיק - Studio Mic</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 <header>
     <nav>
         <div class="logo-area">
@@ -35,7 +34,7 @@
         </ul>
 
         <div class="music-wrapper">
-            <i class="fas fa-music music-icon"></i>
+            <span class="music-note">♫</span> 
             <label class="switch">
                 <input type="checkbox" id="music-toggle">
                 <span class="slider round"></span>
@@ -43,24 +42,38 @@
         </div>
     </nav>
 </header>
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="main-title">הקול שלכם</h1>
-                <h2 class="gold-title">הפלייבק המדויק</h2>
-                <h3 class="thin-title">מזכרת לכל החיים</h3>
-                <p class="sub-text">
-                    "אולפן הקלטות בוטיק שיהפוך את הביצוע שלכם לקסם – לאירועים, למשפחה ולנשמה."
-                </p>
-               <a href="#" class="btn-portfolio"><span>האזינו לדוגמאות</span></a>
-            </div>
-        </section>
-    </main>
 
-    <audio id="myAudio" loop>
-        <source src="assets/music.mp3" type="audio/mpeg">
-    </audio>
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="main-title">הקול שלכם</h1>
+            <h2 class="gold-title">הפלייבק המדויק</h2>
+            <h3 class="thin-title">מזכרת לכל החיים</h3>
+            <p class="sub-text">
+                "אולפן הקלטות בוטיק שיהפוך את הביצוע שלכם לקסם – לאירועים, למשפחה ולנשמה."
+            </p>
+           <a href="#" class="btn-portfolio"><span>האזינו לדוגמאות</span></a>
+        </div>
+    </section>
+</main>
 
-    <script src="js/main.js"></script>
+<audio id="myAudio" loop>
+    <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    // קוד להפעלת המוזיקה עם הכפתור
+    const musicToggle = document.getElementById('music-toggle');
+    const bgMusic = document.getElementById('myAudio');
+
+    musicToggle.addEventListener('change', function() {
+        if (this.checked) {
+            bgMusic.play().catch(e => console.log("הדפדפן חסם ניגון אוטומטי"));
+        } else {
+            bgMusic.pause();
+        }
+    });
+</script>
+
 </body>
 </html>
