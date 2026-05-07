@@ -11,34 +11,29 @@
 </head>
 <body>
 
-    <div id="progress-bar"></div>
-
-<header>
-    <nav>
-        <div class="logo">
-            <img src="assets/logo.png" alt="Logo">
-        </div>
-        
-        <ul class="nav-links">
-            <li><a href="#">בית</a></li>
-            <li><a href="#">אודותיי</a></li>
-            <li><a href="#">היצירות שלי</a></li>
-            <li><a href="#">תמחור</a></li>
-            <li><a href="#contact">צור קשר</a></li>
-        </ul>
-
-        <div class="music-side">
-            <div class="toggle-container" id="musicToggle">
-                <div class="circle"></div>
+    <header>
+        <nav>
+            <div class="music-toggle">
+                <div class="toggle-container" id="musicToggle">
+                    <div class="circle"></div>
+                </div>
+                <span class="music-icon">🎵</span>
             </div>
-            <span class="music-icon">🎵</span>
-        </div>
-    </nav>
-</header>
+            
+            <ul class="nav-links">
+                <li><a href="#">בית</a></li>
+                <li><a href="#">אודותיי</a></li>
+                <li><a href="#">היצירות שלי</a></li>
+                <li><a href="#">תמחור</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+            </ul>
 
-<audio id="myAudio" loop>
-    <source src="assets/music.mp3" type="audio/mpeg">
-</audio>
+            <div class="logo">
+                <img src="assets/logo.png" alt="Logo"> 
+            </div>
+        </nav>
+    </header>
+
     <main>
         <section class="hero">
             <div class="hero-content">
@@ -46,32 +41,15 @@
                 <h1 class="main-title">הקול שלכם</h1>
                 <h2 class="gold-title">הפלייבק המדויק</h2>
                 <h3 class="thin-title">מזכרת לכל החיים</h3>
-                
                 <p class="sub-text">
-                    "אולפן הקלטות בוטיק שיהפוך את הביצוע שלכם לקסם – <br>
-                    לאירועים, למשפחה ולנשמה."
+                    "אולפן הקלטות בוטיק שיהפוך את הביצוע שלכם לקסם – לאירועים, למשפחה ולנשמה."
                 </p>
-
                 <a href="#" class="btn-portfolio">האזינו לדוגמאות</a>
             </div>
         </section>
     </main>
 
-    <footer id="contact">
-        <div class="footer-content">
-            <h3>בואו נדבר מוזיקה</h3>
-            <p>📍 כתובת הסטודיו שלכם</p>
-            <p>📞 טלפון: 05X-XXXXXXX</p>
-            <div class="social-links">
-                <a href="#">WhatsApp</a> | <a href="#">Instagram</a> | <a href="#">YouTube</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 Studio Mic - כל הזכויות שמורות</p>
-        </div>
-    </footer>
-
-    <audio id="bgMusic" loop>
+    <audio id="myAudio" loop>
         <source src="assets/music.mp3" type="audio/mpeg">
     </audio>
 
