@@ -52,7 +52,7 @@ nav {
     height: 120px;
     width: auto;
     position: absolute;
-    top: -40px;
+    top: -60px;
     right: 0;
     z-index: 1001;
     transition: 0.4s;
@@ -63,7 +63,7 @@ nav {
 /* פירורי הלחם - לבן, מתחת להדר, ליד האות S */
 .breadcrumbs {
     position: absolute;
-    top: 80px; /* בדיוק מתחת להדר */
+    top: 20px; /* בדיוק מתחת להדר */
     right: 140px; 
     color: var(--white);
     font-size: 14px;
