@@ -1,6 +1,6 @@
 :root {
     --gold: #D6B078;
-    --red: #e63946;
+    --red: #e43a45;
     --black: #0a0a0a;
     --white: #ffffff;
 }
@@ -9,30 +9,28 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Heebo', sans-serif;
-    /* תיקון רקע: נוסף min-height ו-fixed כדי שהרקע לא ייגמר באמצע המסך */
     min-height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('../assets/background.png');
+    /* רקע קבוע שלא נגמר באמצע */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('../assets/background.png');
     background-size: cover;
     background-position: center top;
     background-attachment: fixed;
     background-color: var(--black);
     color: var(--white);
-    overflow-x: hidden;
     direction: rtl;
+    overflow-x: hidden;
 }
 
-/* --- ההדר נדבק למעלה --- */
+/* --- הדר דביק --- */
 header {
     background-color: #EAEAEA;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     height: 80px;
     display: flex;
     align-items: center;
-    /* overflow: visible מאפשר ללוגו לצאת מגבולות ההדר למטה */
-    overflow: visible;
+    overflow: visible; /* מאפשר ללוגו לבלוט החוצה */
 }
 
 nav {
@@ -40,182 +38,147 @@ nav {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 5%;
+    padding: 0 20px; /* צמצום פדינג כדי שהלוגו והמוזיקה יגיעו לקצוות */
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links a {
-    color: #000000;
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--gold);
-}
-
-/* --- עיצוב הלוגו: גדול ויוצא מההדר --- */
-.logo img {
-    height: 120px; /* הגדלתי משמעותית */
-    width: auto;
-    display: block;
-    transition: transform 0.4s ease-in-out; /* אנימציה מהירה יותר */
-    cursor: pointer;
+/* --- לוגו: מיושר לימין ופורץ החוצה --- */
+.logo {
     position: relative;
-    top: 25px; /* גורם לו לצאת מההדר כלפי מטה */
+    right: -10px; /* מזיז את הלוגו עוד יותר ימינה */
+}
+
+.logo img {
+    height: 130px; /* לוגו גדול */
+    width: auto;
+    position: absolute;
+    top: -40px; /* פורץ למעלה ולמטה מההדר */
+    right: 0;
+    transition: transform 0.4s ease-in-out;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
     z-index: 1001;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); /* צל שייתן עומק ליציאה */
 }
 
 .logo img:hover {
     transform: rotate(360deg);
 }
 
-/* מוזיקה - נמצאת משמאל לצופה (בגלל ה-flex) */
-.music-toggle {
+/* --- תפריט ניווט במרכז --- */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0 auto; /* מרכז את התפריט */
+}
+
+.nav-links a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+/* --- כפתור מוזיקה (Toggle חום) משמאל --- */
+.music-wrapper {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background: rgba(0,0,0,0.05); /* רקע עדין שייראה כמו כפתור */
-    padding: 8px 15px;
-    border-radius: 30px;
-    border: 1px solid rgba(0,0,0,0.1);
-    cursor: pointer;
+    gap: 8px;
+    margin-left: 10px;
 }
 
-.music-icon {
-    color: #000000;
-    font-size: 18px;
-}
+.music-icon { color: #000; font-size: 18px; }
 
-/* --- תפריטים נפתחים (Dropdown) --- */
-.dropdown {
+.switch {
     position: relative;
     display: inline-block;
+    width: 50px;
+    height: 24px;
 }
 
-.dropdown-menu {
-    display: none;
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
     position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #EAEAEA;
-    min-width: 150px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
-    border-radius: 0 0 8px 8px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    z-index: 1001;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
 }
 
-.dropdown-menu li {
-    border-bottom: 1px solid #ddd;
+/* הצבע החום מהתמונה ששלחת */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 4px; bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
 }
 
-.dropdown-menu li:last-child {
-    border-bottom: none;
-}
+input:checked + .slider { background-color: var(--gold); }
+input:checked + .slider:before { transform: translateX(24px); }
 
-.dropdown-menu li a {
-    display: block;
-    padding: 12px 15px;
-    color: #000;
-}
-
-.dropdown-menu li a:hover {
-    background-color: #dcdcdc;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-/* --- Hero Section: מיושר לימין מעל הדמות --- */
+/* --- Hero Section: כותרות בצד שמאל --- */
 .hero {
     height: 85vh;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* מצמיד לימין בגלל ה-RTL */
-    padding: 0 8%;
+    justify-content: flex-end; /* דוחף את התוכן לצד שמאל של המסך ב-RTL */
+    padding: 0 5%;
 }
 
 .hero-content {
     max-width: 600px;
-    text-align: right; /* טקסט לימין */
-    position: relative;
+    text-align: left; /* טקסט מיושר לשמאל כמו בתמונה */
 }
 
 .breadcrumbs {
-    position: absolute;
-    top: -110px; /* תחת ההדר */
-    right: 0; /* מוצמד לימין */
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 15px;
+    color: var(--gold); /* צבע זהב כמו ב-image_e072eb.jpg */
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: block;
+    text-align: left;
 }
 
-/* --- צמצום רווחים בין הכותרות --- */
 .main-title {
-    font-size: 70px;
+    font-size: 80px;
     font-weight: 900;
     margin: 0;
-    line-height: 0.85; /* צמצום משמעותי */
+    line-height: 0.9;
 }
 
 .gold-title {
-    font-size: 60px;
+    font-size: 70px;
     color: var(--gold);
     margin: 0;
-    font-weight: 900;
-    line-height: 0.85;
+    line-height: 0.9;
 }
 
-.thin-title {
-    font-size: 35px;
-    font-weight: 300;
-    margin: 10px 0 25px 0;
-    line-height: 1;
-}
-
-/* --- כפתור האזינו לדוגמאות --- */
+/* --- כפתור אדום עם טקסט זהב מנצנץ --- */
 .btn-portfolio {
-    background-color: #E43A45;
+    background-color: var(--red);
     display: inline-block;
-    padding: 12px 35px;
+    padding: 12px 40px;
     border-radius: 50px;
     text-decoration: none;
-    cursor: pointer;
-    border: 2px solid var(--gold);
-    transition: transform 0.3s ease;
+    margin-top: 25px;
+    transition: transform 0.3s;
 }
 
 .btn-portfolio span {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
-    background: linear-gradient(110deg, #000000 35%, #D6B078 50%, #000000 65%);
+    background: linear-gradient(110deg, #000 35%, #D6B078 50%, #000 65%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: black-gold-reverse 3s linear infinite;
-    display: inline-block;
+    animation: shine 3s linear infinite;
 }
 
-@keyframes black-gold-reverse {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
+@keyframes shine {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
 }
 
-.btn-portfolio:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(228, 58, 69, 0.4);
-}
+.btn-portfolio:hover { transform: scale(1.05); }
