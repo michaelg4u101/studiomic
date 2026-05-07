@@ -90,30 +90,64 @@ header {
 }
 
 /* Hero Section - מיושר לשמאל כבתמונה */
-.hero {
-    height: 90vh;
-    display: flex;
-    align-items: center;
-    direction: ltr; /* דוחף את התוכן לשמאל */
-    padding: 0 10%;
-}
-
 .hero-content {
     max-width: 600px;
-    text-align: left; /* יישור הטקסט לשמאל */
+    text-align: left;
+    position: relative; /* חשוב כדי שפירורי הלחם יתמקמו נכון */
 }
 
-.main-title { font-size: 70px; font-weight: 900; margin: 0; }
-.gold-title { font-size: 60px; color: var(--gold); margin: 0; }
-.thin-title { font-size: 30px; font-weight: 300; margin: 10px 0; }
-.sub-text { color: #ccc; margin-bottom: 30px; line-height: 1.6; }
+/* פירורי הלחם מוצמדים למעלה מתחת להדר */
+.breadcrumbs {
+    position: absolute;
+    top: -120px; /* מושך את הטקסט למעלה לכיוון ההדר */
+    left: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+}
 
+/* --- צמצום רווחים בין הכותרות --- */
+.main-title {
+    font-size: 70px;
+    font-weight: 900;
+    margin: 0;
+    line-height: 0.9; /* מקטין את גובה השורה */
+}
+
+.gold-title {
+    font-size: 60px;
+    color: var(--gold);
+    margin: 0; /* הורדנו רווח עליון */
+    font-weight: 900;
+    line-height: 0.9;
+}
+
+.thin-title {
+    font-size: 35px;
+    font-weight: 300;
+    margin: 5px 0 20px 0; /* רווח קטנטן ומיד אחריו הטקסט הקטן */
+    line-height: 1;
+}
+
+/* --- כפתור האזינו לדוגמאות עם אנימציית הזהב-שחור --- */
 .btn-portfolio {
+    background: linear-gradient(110deg, #000000 35%, #D6B078 50%, #000000 65%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: black-gold-reverse 3s linear infinite;
     display: inline-block;
-    background: var(--red);
-    color: white;
-    padding: 15px 35px;
+    
+    /* הגדרות כפתור נוספות כדי שייראה טוב */
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px 30px;
+    border: 2px solid var(--gold); /* מסגרת זהב כדי להבליט אותו על הרקע */
     border-radius: 50px;
     text-decoration: none;
-    font-weight: 700;
+    cursor: pointer;
+}
+
+@keyframes black-gold-reverse {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
 }
