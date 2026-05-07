@@ -206,8 +206,8 @@ nav {
 
 /* האנימציה שלך */
 @keyframes black-gold-reverse {
-    0% { background-position: 200% center; }
-    100% { background-position: -200% center; }
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
 }
 
 /* אפקט ריחוף קטן לכפתור */
