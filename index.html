@@ -13,10 +13,10 @@
 
     <div id="progress-bar"></div>
 
-   <header>
+<header>
     <nav>
         <div class="logo">
-            <img src="assets/logo.png" alt="Logo"> 
+            <img src="assets/logo.png" alt="Logo">
         </div>
         
         <ul class="nav-links">
@@ -27,15 +27,18 @@
             <li><a href="#contact">צור קשר</a></li>
         </ul>
 
-        <div class="music-toggle">
-            <label class="switch">
-                <input type="checkbox" id="musicBtn">
-                <span class="slider"></span>
-            </label>
-            <span>🎵</span>
+        <div class="music-side">
+            <div class="toggle-container" id="musicToggle">
+                <div class="circle"></div>
+            </div>
+            <span class="music-icon">🎵</span>
         </div>
     </nav>
 </header>
+
+<audio id="myAudio" loop>
+    <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
     <main>
         <section class="hero">
             <div class="hero-content">
