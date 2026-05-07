@@ -10,7 +10,7 @@ body, html {
     padding: 0;
     font-family: 'Heebo', sans-serif;
     min-height: 100vh;
-    /* רקע קבוע שלא נגמר באמצע */
+    /* רקע קבוע שלא נחתך בגלילה */
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('../assets/background.png');
     background-size: cover;
     background-position: center top;
@@ -30,7 +30,8 @@ header {
     height: 80px;
     display: flex;
     align-items: center;
-    overflow: visible; /* מאפשר ללוגו לבלוט החוצה */
+    overflow: visible; /* חשוב! מאפשר ללוגו לפרוץ החוצה */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 nav {
@@ -38,20 +39,28 @@ nav {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 20px; /* צמצום פדינג כדי שהלוגו והמוזיקה יגיעו לקצוות */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* --- לוגו: מיושר לימין ופורץ החוצה --- */
+/* --- אזור הלוגו ופירורי הלחם --- */
+.logo-area {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
 .logo {
     position: relative;
-    right: -10px; /* מזיז את הלוגו עוד יותר ימינה */
+    right: -10px;
 }
 
 .logo img {
-    height: 130px; /* לוגו גדול */
+    height: 130px; 
     width: auto;
     position: absolute;
-    top: -40px; /* פורץ למעלה ולמטה מההדר */
+    top: -40px; 
     right: 0;
     transition: transform 0.4s ease-in-out;
     filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
@@ -62,12 +71,25 @@ nav {
     transform: rotate(360deg);
 }
 
+/* פירורי הלחם: לבן על השחור, דבוק להדר ליד האות S */
+.breadcrumbs {
+    position: absolute;
+    top: 80px; /* מתחת לקו ההדר בדיוק */
+    right: 140px; /* מרחק מהלוגו שמתאים לאות S */
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 999;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
 /* --- תפריט ניווט במרכז --- */
 .nav-links {
     display: flex;
     list-style: none;
     gap: 25px;
-    margin: 0 auto; /* מרכז את התפריט */
+    margin: 0 auto;
 }
 
 .nav-links a {
@@ -75,9 +97,14 @@ nav {
     text-decoration: none;
     font-weight: 600;
     font-size: 17px;
+    transition: color 0.3s;
 }
 
-/* --- כפתור מוזיקה (Toggle חום) משמאל --- */
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+/* --- כפתור מוזיקה (Toggle) משמאל --- */
 .music-wrapper {
     display: flex;
     align-items: center;
@@ -105,7 +132,6 @@ nav {
     border-radius: 34px;
 }
 
-/* הצבע החום מהתמונה ששלחת */
 .slider:before {
     position: absolute;
     content: "";
@@ -119,26 +145,18 @@ nav {
 input:checked + .slider { background-color: var(--gold); }
 input:checked + .slider:before { transform: translateX(24px); }
 
-/* --- Hero Section: כותרות בצד שמאל --- */
+/* --- Hero Section: כותרות בשמאל מעל הציוד --- */
 .hero {
     height: 85vh;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* דוחף את התוכן לצד שמאל של המסך ב-RTL */
+    justify-content: flex-end; /* דוחף תוכן לשמאל ב-RTL */
     padding: 0 5%;
 }
 
 .hero-content {
     max-width: 600px;
-    text-align: left; /* טקסט מיושר לשמאל כמו בתמונה */
-}
-
-.breadcrumbs {
-    color: var(--gold); /* צבע זהב כמו ב-image_e072eb.jpg */
-    font-size: 14px;
-    margin-bottom: 15px;
-    display: block;
-    text-align: left;
+    text-align: left; /* יישור טקסט לשמאל כמו בתמונה */
 }
 
 .main-title {
@@ -163,7 +181,8 @@ input:checked + .slider:before { transform: translateX(24px); }
     border-radius: 50px;
     text-decoration: none;
     margin-top: 25px;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
 }
 
 .btn-portfolio span {
@@ -174,6 +193,7 @@ input:checked + .slider:before { transform: translateX(24px); }
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: shine 3s linear infinite;
+    display: inline-block;
 }
 
 @keyframes shine {
@@ -181,4 +201,7 @@ input:checked + .slider:before { transform: translateX(24px); }
     100% { background-position: -200% center; }
 }
 
-.btn-portfolio:hover { transform: scale(1.05); }
+.btn-portfolio:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(228, 58, 69, 0.4);
+}
