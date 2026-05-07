@@ -179,23 +179,39 @@ nav {
 }
 
 /* --- כפתור האזינו לדוגמאות --- */
+/* העיצוב של גוף הכפתור */
 .btn-portfolio {
+    background-color: #E43A45; /* האדום שביקשת */
+    display: inline-block;
+    padding: 12px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid var(--gold); /* מסגרת הזהב */
+    transition: transform 0.3s ease;
+    vertical-align: middle;
+}
+
+/* העיצוב של הטקסט בתוך הכפתור - כאן קורה הקסם */
+.btn-portfolio span {
+    font-size: 20px;
+    font-weight: 700;
     background: linear-gradient(110deg, #000000 35%, #D6B078 50%, #000000 65%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: black-gold-reverse 3s linear infinite;
     display: inline-block;
-    font-size: 20px;
-    font-weight: 700;
-    padding: 10px 30px;
-    border: 2px solid var(--gold);
-    border-radius: 50px;
-    text-decoration: none;
-    cursor: pointer;
 }
 
+/* האנימציה שלך */
 @keyframes black-gold-reverse {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+}
+
+/* אפקט ריחוף קטן לכפתור */
+.btn-portfolio:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(228, 58, 69, 0.4);
 }
