@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // 1. טעינת מצב קודם מזיכרון הדפדפן (localStorage)
-    const savedTime = localStorage.getItem("musicTime");
+    const savedTime = localStorage.getItem("musictime");
     const isPlaying = localStorage.getItem("musicPlaying") === "true";
 
     if (savedTime) {
