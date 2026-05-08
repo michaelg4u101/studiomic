@@ -117,14 +117,24 @@ nav {
     justify-content: flex-end;
 }
 
-.music-icon { color: #000; font-size: 20px; font-weight: bold; }
+.music-icon { 
+    color: #000; 
+    font-size: 20px; 
+    font-weight: bold; 
+}
 
 .switch {
     position: relative;
     width: 45px;
     height: 22px;
 }
-.switch input { opacity: 0; width: 0; height: 0; }
+
+.switch input { 
+    opacity: 0; 
+    width: 0; 
+    height: 0; 
+}
+
 .slider {
     position: absolute;
     cursor: pointer;
@@ -133,6 +143,7 @@ nav {
     border-radius: 34px;
     transition: .4s;
 }
+
 .slider:before {
     position: absolute;
     content: "";
@@ -142,8 +153,15 @@ nav {
     border-radius: 50%;
     transition: .4s;
 }
-input:checked + .slider { background-color: var(--gold); }
-input:checked + .slider:before { transform: translateX(21px); }
+
+/* צבע זהב בעת הפעלה - ניתן להתאים למשתנה שלך */
+input:checked + .slider { 
+    background-color: #D6B078; 
+}
+
+input:checked + .slider:before { 
+    transform: translateX(21px); 
+}
 
 /* --- Hero Content (שמאל) --- */
 .hero {
