@@ -33,13 +33,13 @@
             <li><a href="#">צור קשר</a></li>
         </ul>
 
-        <div class="music-wrapper">
-            <span class="music-note">♫</span> 
-            <label class="switch">
-                <input type="checkbox" id="music-toggle">
-                <span class="slider round"></span>
-            </label>
-        </div>
+       <div class="music-wrapper">
+    <span class="music-icon">♫</span> 
+    <label class="switch">
+        <input type="checkbox" id="music-toggle">
+        <span class="slider round"></span>
+    </label>
+</div>
     </nav>
 </header>
 
@@ -57,37 +57,14 @@
     </section>
 </main>
 
+<!-- נגן האודיו (לשים לפני סגירת ה-body) -->
 <audio id="myAudio" loop>
     <source src="assets/music.mp3" type="audio/mpeg">
+    הדפדפן שלך לא תומך בנגן אודיו.
 </audio>
 
-<script>
-    // הוספנו הערות HTML כדי להסביר את החלק הזה
-    // <!-- תחילת סקריפט לוגי לניגון מוזיקה -->
-    
-    const musicToggle = document.getElementById('music-toggle');
-    const bgMusic = document.getElementById('myAudio');
-
-    // פונקציה שמנסה לנגן
-    function playMusic() {
-        // מנסה לנגן ומטפל בשגיאה אם הדפדפן חוסם
-        bgMusic.play().catch(e => {
-            console.error("הדפדפן חסם ניגון אוטומטי. יש צורך בלחיצה נוספת.", e);
-        });
-    }
-
-    musicToggle.addEventListener('change', function() {
-        if (this.checked) {
-            // כאשר המשתמש מדליק את הכפתור, אנחנו מפעילים את הפונקציה
-            playMusic();
-        } else {
-            // כאשר המשתמש מכבה את הכפתור
-            bgMusic.pause();
-        }
-    });
-
-    // <!-- סוף סקריפט לוגי -->
-</script>
+<!-- קריאה לקובץ ה-JS בסוף ה-body -->
+<script src="main.js"></script>
 
 </body>
 </html>
