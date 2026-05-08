@@ -12,15 +12,16 @@ window.onscroll = function() {
 // הפעלת מוזיקת רקע
 document.addEventListener("DOMContentLoaded", function() {
     const audio = document.getElementById("myAudio");
-    // שינוי כאן: מחפשים לפי הקלאס הנכון או ה-ID שנתנו ב-HTML
-    const container = document.getElementById("musicToggle");
+    // זיהוי מדויק של תיבת הסימון לפי ה-ID ב-HTML
+    const toggleInput = document.getElementById("music-toggle");
 
-    if (!audio || !container) {
+    // בדיקה שהאלמנטים קיימים בדף כדי למנוע שגיאות
+    if (!audio || !toggleInput) {
         console.error("שגיאה: לא נמצא אלמנט האודיו או כפתור הנגינה בדף");
         return;
     }
 
-    // 1. טעינת מצב קודם
+    // 1. טעינת מצב קודם מזיכרון הדפדפן (localStorage)
     const savedTime = localStorage.getItem("musicTime");
     const isPlaying = localStorage.getItem("musicPlaying") === "true";
 
@@ -29,25 +30,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (isPlaying) {
-        audio.play().then(() => {
-            container.classList.add("active");
-        }).catch(err => console.log("הדפדפן חסם הפעלה אוטומטית - ממתין לקליק"));
+        toggleInput.checked = true; // מדליק את הכפתור הויזואלית
+        audio.play().catch(err => {
+            console.log("הדפדפן חסם הפעלה אוטומטית - ממתין לקליק של המשתמש");
+            toggleInput.checked = false; // אם נחסם, נחזיר את הכפתור למצב כבוי
+        });
     }
 
-    // 2. הפעלה והפסקה בלחיצה
-    container.addEventListener("click", function() {
-        if (audio.paused) {
+    // 2. הפעלה והפסקה בעת שינוי מצב הכפתור (change ולא click, כי זה checkbox)
+    toggleInput.addEventListener("change", function() {
+        if (this.checked) {
             audio.play();
-            container.classList.add("active");
             localStorage.setItem("musicPlaying", "true");
         } else {
             audio.pause();
-            container.classList.remove("active");
             localStorage.setItem("musicPlaying", "false");
         }
     });
 
-    // 3. שמירת מיקום השיר
+    // 3. שמירת מיקום השיר בכל עדכון זמן
     audio.ontimeupdate = function() {
         localStorage.setItem("musicTime", audio.currentTime);
     };
