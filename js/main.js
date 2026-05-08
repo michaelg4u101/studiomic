@@ -50,6 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 3. שמירת מיקום השיר בכל עדכון זמן
     audio.ontimeupdate = function() {
-        localStorage.setItem("musicTime", audio.currentTime);
+        localStorage.setItem("musictime", audio.currenttime);
     };
 });
