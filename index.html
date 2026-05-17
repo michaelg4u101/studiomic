@@ -68,10 +68,11 @@
 
         if (!audio || !toggleInput) return;
 
-        // איפוס זיכרון ישן ותקוע
+        // מוחקים כל זכר לזיכרון הישן כדי שלא יתקע את הנגן
         localStorage.removeItem("musictime");
         localStorage.removeItem("musicPlaying");
 
+        // האזנה נקייה ללחיצה
         toggleInput.addEventListener("change", function() {
             if (this.checked) {
                 audio.play().catch(function(error) {
@@ -83,6 +84,5 @@
         });
     });
 </script>
-
 </body>
 </html>
