@@ -12,9 +12,9 @@
 <header>
     <nav>
         <div class="logo-area">
-            <div class="logo">
-                <a href="#"><img src="assets/logo.png" alt="סטודיומייק לוגו"></a>
-            </div>
+           <div class="logo">
+    <a href="#"><img src="./assets/logo.png" alt="סטודיומייק לוגו"></a>
+</div>
             <div class="breadcrumbs">בית / אולפן / קריאה בחורה</div>
         </div>
 
@@ -57,26 +57,36 @@
     </section>
 </main>
 <audio id="myAudio" loop>
-    <source src="assets/music.mp3" type="audio/mpeg">
+    <source src="./assets/music.mp3" type="audio/mpeg">
     הדפדפן שלך לא תומך בנגן אודיו.
 </audio>
+
+<div class="music-control-container">
+    <input type="checkbox" id="music-toggle" class="music-checkbox">
+    <label for="music-toggle" class="music-label">
+        <span class="music-icon">🎵</span>
+    </label>
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const audio = document.getElementById("myAudio");
         const toggleInput = document.getElementById("music-toggle");
 
-        if (!audio || !toggleInput) return;
+        if (!audio || !toggleInput) {
+            console.error("שגיאה: לא נמצא אלמנט האודיו או כפתור ההפעלה בדף!");
+            return;
+        }
 
-        // מוחקים כל זכר לזיכרון הישן כדי שלא יתקע את הנגן
+        // ניקוי זיכרון קודם
         localStorage.removeItem("musictime");
         localStorage.removeItem("musicPlaying");
 
-        // האזנה נקייה ללחיצה
+        // האזנה קבועה לשינוי מצב הכפתור
         toggleInput.addEventListener("change", function() {
             if (this.checked) {
                 audio.play().catch(function(error) {
-                    console.error("שגיאת הפעלה:", error.message);
+                    console.error("הדפדפן חסם את הניגון האוטומטי:", error.message);
                 });
             } else {
                 audio.pause();
