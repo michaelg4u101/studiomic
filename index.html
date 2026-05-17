@@ -64,7 +64,28 @@
 </audio>
 
 <!-- קריאה לקובץ ה-JS בסוף ה-body -->
-<script src="js/main.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const audio = document.getElementById("myAudio");
+        const toggleInput = document.getElementById("music-toggle");
+
+        // נוודא שהכפתור מגיב ללחיצה
+        toggleInput.addEventListener("change", function() {
+            if (this.checked) {
+                // ניסיון לנגן
+                audio.play()
+                    .then(function() {
+                        alert("המוזיקה עובדת! הנתיב תקין.");
+                    })
+                    .catch(function(error) {
+                        alert("הכפתור נלחץ, אבל יש שגיאה בקובץ המוזיקה: " + error.message);
+                    });
+            } else {
+                audio.pause();
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
