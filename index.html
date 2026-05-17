@@ -56,30 +56,27 @@
         </div>
     </section>
 </main>
-
-<!-- נגן האודיו (לשים לפני סגירת ה-body) -->
 <audio id="myAudio" loop>
     <source src="assets/music.mp3" type="audio/mpeg">
     הדפדפן שלך לא תומך בנגן אודיו.
 </audio>
 
-<!-- קריאה לקובץ ה-JS בסוף ה-body -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const audio = document.getElementById("myAudio");
         const toggleInput = document.getElementById("music-toggle");
 
-        // נוודא שהכפתור מגיב ללחיצה
+        if (!audio || !toggleInput) return;
+
+        // איפוס זיכרון ישן ותקוע
+        localStorage.removeItem("musictime");
+        localStorage.removeItem("musicPlaying");
+
         toggleInput.addEventListener("change", function() {
             if (this.checked) {
-                // ניסיון לנגן
-                audio.play()
-                    .then(function() {
-                        alert("המוזיקה עובדת! הנתיב תקין.");
-                    })
-                    .catch(function(error) {
-                        alert("הכפתור נלחץ, אבל יש שגיאה בקובץ המוזיקה: " + error.message);
-                    });
+                audio.play().catch(function(error) {
+                    console.error("שגיאת הפעלה:", error.message);
+                });
             } else {
                 audio.pause();
             }
